@@ -1,0 +1,32 @@
+ALGORITHM Vowels, Words, Sentences Counting
+VAR
+    i [] : STRING = 'str' ;
+    SL : INTEGER = 0 ;//Sentences_length
+    VN : INTEGER = 0 ; //Vowel's_number
+    WN : INTEGER =0 ; // Word's_number
+    SPACE : CHAR = " " ;// Space to count
+    DOT : CHAR = "."; //Dot to count
+    Vi : STRING = ["a" , "e" , "i" , "o" , "u" , "y" , "A" , "E" , "I" , "O" , "U" , "Y" ] ;// Vowels to count
+
+BEGIN
+for (i.length > 0)
+READ i[] ; 
+    IF (i[] = DOT) THEN
+        COUNT SL = SL + INTEGER(i.length);
+        PRINT ('The number of characters (correct and wrong) that you have typed so far is :' + SL);
+    ELSE_IF (i[0]<> ".") And ( i[0]<> " " ) 
+        THEN
+            SWITCH (i) DO
+                  CASE 1 : IF (i.value = Vi) THEN
+                           COUNT VN = VN + 1 ; // code to be executed to count vowel's number
+                           PRINT ('The number of vowels that you have typed so far is :' + VN);
+                  CASE 2 : IF (i.value = SPACE) OR (i.value = DOT) THEN
+                           COUNT WN = WN + 1// code to be executed to count word's number
+                           PRINT ('The number of words that you have typed so far is :' + WN);
+                  DEFAULT :  Print ('You have typed a word (correct or false) that does not contain a vowel') 
+                  // code to be executed if i doesn't match any cases
+            END_SWITCH                     
+        END_IF     
+    END_IF
+RETURN WRITE (SL, VN, WN)
+END
